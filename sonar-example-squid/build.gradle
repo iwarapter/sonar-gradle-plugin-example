@@ -39,7 +39,7 @@ dependencies {
 }
 
 sonarpackaging {
-    pluginDir = "/Users/iwarapter/Downloads/sonarqube-4.5.4/extensions/plugins/"
+    pluginDir = sonarInstall
     pluginKey = 'example'
     pluginClass = 'com.example.ExamplePlugin'
     pluginName 'Example'
