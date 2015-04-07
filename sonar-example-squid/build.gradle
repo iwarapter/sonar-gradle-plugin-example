@@ -4,42 +4,25 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.iadams.gradle.plugins:gradle-sonar-packaging-plugin:0.1-SNAPSHOT'
+        classpath 'com.iadams.plugins:gradle-sonar-packaging-plugin:0.1-SNAPSHOT'
     }
 }
 
 apply plugin: 'com.iadams.sonar-packaging'
 
-configurations {
-    provided
-    compile.extendsFrom provided
-}
-
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     compile project(':example-squid')
 
-    provided "org.codehaus.sonar:sonar-plugin-api:3.7"
+    provided 'org.codehaus.sonar:sonar-plugin-api:3.7'
     compile 'org.codehaus.sonar.common-rules:sonar-common-rules:1.2'
-
-    //defined for the plugin package testing
-    sonarqube group: 'jaxen', name: 'jaxen', version: '1.1.4', transitive: false
-    sonarqube group: 'org.codehaus.sonar.sslr', name: 'sslr-core', version: '1.20', transitive: false
-    sonarqube group: 'org.codehaus.sonar.sslr', name: 'sslr-toolkit', version: '1.20', transitive: false
-    sonarqube group: 'org.codehaus.sonar.sslr', name: 'sslr-testing-harness', version: '1.20', transitive: false
-    sonarqube group: 'org.codehaus.sonar.sslr', name: 'sslr-xpath', version: '1.20', transitive: false
-    sonarqube group: 'org.codehaus.sonar.sslr-squid-bridge', name: 'sslr-squid-bridge', version: '2.4', transitive: false
-    sonarqube group: 'org.codehaus.sonar.common-rules', name: 'sonar-common-rules', version: '1.2', transitive: false
-    sonarqube(project(':example-squid')){
-        transitive = false
-    }
 }
 
-sonarpackaging {
-    pluginDir = sonarInstall
+sonarPackaging {
+    //pluginDir = sonarInstall
     pluginKey = 'example'
     pluginClass = 'com.example.ExamplePlugin'
     pluginName 'Example'
