@@ -1,14 +1,6 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.iadams.plugins:gradle-sonar-packaging-plugin:0.1-SNAPSHOT'
-    }
+plugins {
+    id "com.iadams.sonar-packaging" version "0.1"
 }
-
-apply plugin: 'com.iadams.sonar-packaging'
 
 repositories {
     mavenCentral()
@@ -22,9 +14,10 @@ dependencies {
 }
 
 sonarPackaging {
-    //pluginDir = sonarInstall
+    serverUrl = 'http://localhost:9000'
+    pluginDir = '/path/to/local/sonarqube/extensions/plugins/'
     pluginKey = 'example'
     pluginClass = 'com.example.ExamplePlugin'
-    pluginName 'Example'
+    pluginName = 'Example'
     pluginDescription = 'An Example Plugin!'
 }

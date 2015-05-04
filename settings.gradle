@@ -1,2 +1,2 @@
 include 'example-squid'
-include 'sonar-example-squid'
+include 'sonar-example-plugin'
